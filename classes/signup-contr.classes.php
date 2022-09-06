@@ -15,6 +15,8 @@ class SignupContr {
     }
 
     // Here are the error handlers for the sign up form
+
+    // Checking if it is an empty string
     private function emptyInput() {
         $result;
         if (empty($this->$uid) || empty($this->$pwd) || empty($this->$pwdRepeat) || empty($this->$emai)) {
@@ -24,6 +26,17 @@ class SignupContr {
             $result = true;
         }
         return $result;
+    }
+    // Checking for invalid characters
+    private function invalidUid() {
+        $result;
+        if (!preg_match("/^[a-zA-Z0-9]*$", $this->$uid)) {
+            $result = false;
+        }
+        else {
+            $result = true;
+        }
+        return result; 
     }
 
 }

@@ -13,4 +13,17 @@ class SignupContr {
         $this->$pwdRepeat = $pwdRepeat;   
         $this->$email = $email;   
     }
+
+    // Here are the error handlers for the sign up form
+    private function emptyInput() {
+        $result;
+        if (empty($this->$uid) || empty($this->$pwd) || empty($this->$pwdRepeat) || empty($this->$emai)) {
+            $result = false;
+        }
+        else {
+            $result = true;
+        }
+        return $result;
+    }
+
 }

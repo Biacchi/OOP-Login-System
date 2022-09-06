@@ -8,7 +8,11 @@ if (isset($_POST['submit']) {
     $uid = $_POST['email'];
 
     // Instantiate Signup controller class
-    
+    include "../classes/signup.classes.php";
+    include "../classes/signup-contr.classes.php";
+
+    $signup = new signupContr($uid, $pwd, $pwdRepeat, $email);
+
 
     // Running error hanlers and user signup
 

@@ -38,5 +38,15 @@ class SignupContr {
         }
         return result; 
     }
+    private function invalidEmail() {
+        $result;
+        if (!filter_var($this->$email, FILTER_VALIDATE_EMAIL)) {
+            $result = false;
+        }
+        else {
+            $result = true;
+        }
+        return $result;
+    }
 
 }

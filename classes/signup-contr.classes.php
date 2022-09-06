@@ -38,9 +38,23 @@ class SignupContr {
         }
         return result; 
     }
+
+    // Email validation
     private function invalidEmail() {
         $result;
         if (!filter_var($this->$email, FILTER_VALIDATE_EMAIL)) {
+            $result = false;
+        }
+        else {
+            $result = true;
+        }
+        return $result;
+    }
+
+    // Check if the passwords match
+    private function pwdMatch() {
+        $result;
+        if ($this->$pwd !== $this->$pwdRepeat) {
             $result = false;
         }
         else {

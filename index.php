@@ -39,7 +39,7 @@
     </header>
 
     <br>
-    
+
     <div>
         <h4>SIGN UP!</h4>
         <form class="mb-3" action="includes/signup.inc.php" method="post">

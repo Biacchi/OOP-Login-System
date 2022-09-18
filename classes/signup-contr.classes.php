@@ -63,6 +63,18 @@ class SignupContr {
         return $result;
     }
 
+    // Checking to see if there are any other users with the same name or email
+    private function checkingForClones() {
+        $result;
+        if ($this->checkUser($this->$uid, $this->$email)) {
+            $result = false;
+        }
+        else {
+            $result = true;
+        }
+        return $result;
+    }
+
     // We  will create one more validation to make sure there isnt another user with the same username when we sign up
     // but we can't do that yet
 

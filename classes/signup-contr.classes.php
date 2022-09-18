@@ -63,4 +63,7 @@ class SignupContr {
         return $result;
     }
 
+    // We  will create one more validation to make sure there isnt another user with the same username when we sign up
+    // but we can't do that yet
+
 }

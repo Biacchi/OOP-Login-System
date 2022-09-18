@@ -14,6 +14,38 @@ class SignupContr {
         $this->$email = $email;   
     }
 
+    // Signing up the user if there are no errors
+    private function signupUser() {
+        if ($this->emptyInput() == false) {
+            // echo "Empty input!";
+            header("location: ../index.php?error=emptyinput");
+            exit();
+        }
+        if ($this->invalidUid() == false) {
+            // echo "Invalid username!";
+            header("location: ../index.php?error=username");
+            exit();
+        }
+        if ($this->invalidEmail() == false) {
+            // echo "Invalid email!";
+            header("location: ../index.php?error=email");
+            exit();
+        }
+        if ($this->pwdMatch() == false) {
+            // echo "Passwords don't match!";
+            header("location: ../index.php?error=passwordmatch");
+            exit();
+        }
+        if ($this->uidTakenCheck() == false) {
+            // echo "Username or email taken!";
+            header("location: ../index.php?error=usernameoremailtaken");
+            exit();
+        }
+        // If we don't catchg any of these errors, we'll sign in the user
+        $this->setUser();
+    }
+
+
     // Here are the error handlers for the sign up form
 
     // Checking if it is an empty string
@@ -63,8 +95,8 @@ class SignupContr {
         return $result;
     }
 
-    // Checking to see if there are any other users with the same name or email
-    private function checkingForClones() {
+    // Checking to see if there are any other users with the same name or email - 38 minutes (ish)
+    private function uidTakenCheck() {
         $result;
         if ($this->checkUser($this->$uid, $this->$email)) {
             $result = false;

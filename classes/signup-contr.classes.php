@@ -51,7 +51,7 @@ class SignupContr extends Signup {
     // Checking if it is an empty string
     private function emptyInput() {
         $result;
-        if (empty($this->uid) || empty($this->pwd) || empty($this->pwdRepeat) || empty($this->emai)) {
+        if (empty($this->uid) || empty($this->pwd) || empty($this->pwdRepeat) || empty($this->email)) {
             $result = false;
         }
         else {
@@ -62,13 +62,13 @@ class SignupContr extends Signup {
     // Checking for invalid characters
     private function invalidUid() {
         $result;
-        if (!preg_match("/^[a-zA-Z0-9]*$", $this->uid)) {
+        if (!preg_match("/^[a-zA-Z0-9]*$/", $this->uid)) {
             $result = false;
         }
         else {
             $result = true;
         }
-        return result; 
+        return $result; 
     }
 
     // Email validation

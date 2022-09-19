@@ -15,7 +15,7 @@ class SignupContr {
     }
 
     // Signing up the user if there are no errors
-    private function signupUser() {
+    public function signupUser() {
         if ($this->emptyInput() == false) {
             // echo "Empty input!";
             header("location: ../index.php?error=emptyinput");
@@ -42,7 +42,7 @@ class SignupContr {
             exit();
         }
         // If we don't catchg any of these errors, we'll sign in the user
-        $this->setUser();
+        $this->setUser($this->uid, $this->pwd, $this->email);
     }
 
 
@@ -51,7 +51,7 @@ class SignupContr {
     // Checking if it is an empty string
     private function emptyInput() {
         $result;
-        if (empty($this->$uid) || empty($this->$pwd) || empty($this->$pwdRepeat) || empty($this->$emai)) {
+        if (empty($this->uid) || empty($this->pwd) || empty($this->pwdRepeat) || empty($this->emai)) {
             $result = false;
         }
         else {
@@ -62,7 +62,7 @@ class SignupContr {
     // Checking for invalid characters
     private function invalidUid() {
         $result;
-        if (!preg_match("/^[a-zA-Z0-9]*$", $this->$uid)) {
+        if (!preg_match("/^[a-zA-Z0-9]*$", $this->uid)) {
             $result = false;
         }
         else {
@@ -74,7 +74,7 @@ class SignupContr {
     // Email validation
     private function invalidEmail() {
         $result;
-        if (!filter_var($this->$email, FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $result = false;
         }
         else {
@@ -86,7 +86,7 @@ class SignupContr {
     // Check if the passwords match
     private function pwdMatch() {
         $result;
-        if ($this->$pwd !== $this->$pwdRepeat) {
+        if ($this->pwd !== $this->pwdRepeat) {
             $result = false;
         }
         else {
@@ -98,7 +98,7 @@ class SignupContr {
     // Checking to see if there are any other users with the same name or email - 38 minutes (ish)
     private function uidTakenCheck() {
         $result;
-        if ($this->checkUser($this->$uid, $this->$email)) {
+        if ($this->checkUser($this->uid, $this->email)) {
             $result = false;
         }
         else {

@@ -1,6 +1,6 @@
 <?php 
 
-class SignupContr {
+class SignupContr extends Signup {
 
     private $uid;
     private $pwd;
@@ -8,10 +8,10 @@ class SignupContr {
     private $email;
 
     public function __construct($uid, $pwd, $pwdRepeat, $email) {
-        $this->$uid = $uid; 
-        $this->$pwd = $pwd;   
-        $this->$pwdRepeat = $pwdRepeat;   
-        $this->$email = $email;   
+        $this->uid = $uid; 
+        $this->pwd = $pwd;   
+        $this->pwdRepeat = $pwdRepeat;   
+        $this->email = $email;   
     }
 
     // Signing up the user if there are no errors
@@ -98,7 +98,7 @@ class SignupContr {
     // Checking to see if there are any other users with the same name or email - 38 minutes (ish)
     private function uidTakenCheck() {
         $result;
-        if ($this->checkUser($this->uid, $this->email)) {
+        if (!$this->checkUser($this->uid, $this->email)) {
             $result = false;
         }
         else {

@@ -1,7 +1,7 @@
 <?php 
 
 // Here we are going to run queries/we will interact with the database
-class Signup extends dbh {
+class Signup extends Dbh {
     // Method to save the user into the database
     protected function setUser($uid, $pwd, $email) {
         
@@ -30,7 +30,7 @@ class Signup extends dbh {
             header("location: ../index.php?error=stmtfailed");
             exit();
         }
-        // Checking to see if any rows were returned from the query above. We do this to see if there are users already using the email or username submited in the signup form 
+        // Checking to see if any rows were returned from the query above. We do this to see if there are users already using the email or username submited in the signup form         
         $resultCheck;
         if ($stmt->rowCount() > 0) {
             $resultCheck = false;
@@ -38,6 +38,6 @@ class Signup extends dbh {
         else {
             $resultCheck = true;
         }
-        return $resultcheck;
+        return $resultCheck;
     }
 }

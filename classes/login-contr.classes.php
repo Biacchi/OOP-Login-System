@@ -1,6 +1,6 @@
 <?php 
 
-class loginContr extends Login {
+class LoginContr extends Login {
 
     private $uid;
     private $pwd;

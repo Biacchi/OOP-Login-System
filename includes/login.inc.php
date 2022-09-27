@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     include "../classes/login.classes.php";
     include "../classes/login-contr.classes.php";
 
-    $signup = new LoginContr($uid, $pwd);
+    $login = new LoginContr($uid, $pwd);
 
 
     // Running error handlers and user login
